@@ -32,6 +32,7 @@ body h2 a:hover {
   display: inline-block;
   outline: none;
   text-align: center;
+  margin-top: 10px;
   padding: 0.35em 1.2em;
   border-radius: 0.12em;
   text-transform: uppercase;
@@ -72,8 +73,8 @@ body h2 a:hover {
 .chart {
   display: inline-table;
   table-layout: fixed;
-  width: 650px;
-  max-width: 700px;
+  width: 750px;
+  /* max-width: 750px; */
   height: 500px;
   margin: 0 0;
   background-size: 100% 50px;
