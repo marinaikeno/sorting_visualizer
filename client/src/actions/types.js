@@ -1,0 +1,10 @@
+export const SET_ARRAY = "SET_ARRAY";
+export const SET_SWAP = "SET_SWAP";
+export const EMPTY_SWAP = "EMPTY_SWAP";
+export const SET_SELECTED = "SET_SELECTED";
+export const EMPTY_SELECTED = "EMPTY_SELECTED";
+export const SET_HIGHLIGHTED = "SET_HIGHLIGHTED";
+export const EMPTY_HIGHLIGHTED = "EMPTY_HIGHLIGHTED";
+export const SET_SORTED = "SET_SORTED";
+export const EMPTY_SORTED = "EMPTY_SORTED";
+export const SORT_COMPLETED = "SORT_COMPLETED";

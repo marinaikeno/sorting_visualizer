@@ -1,0 +1,100 @@
+body {
+    background-color: whitesmoke;
+    min-width: 730px;
+}
+
+body h2 {
+  margin: 0 0 0 0;
+}
+body h2 a {
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: none;
+  font-size: 18px;
+  color: rgba(92,189,187,1);
+}
+
+body h2 a:hover {
+  color: rgb(50,156,155);
+}
+
+.main-container {
+  text-align: center;
+}
+
+.sort-actions {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.sort-actions button {
+  width: 130px;
+  margin-left: 10px;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  padding: 0.35em 1.2em;
+  border-radius: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  border: 0.1em solid rgba(92,189,187,1);
+  color: rgba(92,189,187,1);
+  background-color: rgb(178, 224, 223);
+  text-decoration: none;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.sort-actions #generate {
+  background: #FF695D;
+  border-color: #FF695D;
+  color: #FCFCFC; 
+}
+
+.sort-actions #generate:hover {
+  background: #D95C5C;
+  border-color: #D95C5C;
+}
+
+.sort-actions button:hover, .sort-actions #selected:disabled {
+  background: rgba(92,189,187,1);
+  border-color: rgba(92,189,187,1);
+  color: #FCFCFC; 
+}
+
+.sort-actions button:disabled, .sort-actions #generate:disabled {
+  background: rgb(197, 197, 197);
+  border-color: rgb(197, 197, 197);
+  color: gray; 
+}
+
+.chart {
+  display: inline-table;
+  table-layout: fixed;
+  width: 650px;
+  max-width: 700px;
+  height: 500px;
+  margin: 0 0;
+  background-size: 100% 50px;
+  background-position: left top;
+}
+.chart li {
+  position: relative;
+  display: table-cell;
+  vertical-align: bottom;
+  height: 200px;
+}
+.chart span {
+  display: block;
+}
+.chart span:before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  display: block;
+  text-align: center;
+  word-wrap: break-word;
+}
+
