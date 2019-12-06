@@ -8,7 +8,7 @@ function App() {
     <div className="main-container">
       <SortSelector />
       <Chart />
-      <h2><a target="_blank" href="https://github.com/marinaikeno/sudoku_solver"><i className="fa fa-github" /> check out my repo</a></h2>
+      <h2><a target="_blank" href="https://github.com/marinaikeno/sorting_visualizer"><i className="fa fa-github" /> check out my repo</a></h2>
     </div>
   );
 }
