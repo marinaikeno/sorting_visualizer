@@ -37,8 +37,7 @@ export const queueMergeSort = (arr) => {
         queues.addToQueue(EMPTY_SWAP);
 
         if (i == 0) {
-            queues.addToQueue(SET_SORTED, prevSorted.map(pair => pair.idx));
-
+            queues.addToQueue(SET_SORTED, prevSorted.map((pair,idx) => idx));
         }
     }
 
