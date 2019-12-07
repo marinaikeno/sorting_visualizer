@@ -1,8 +1,9 @@
 import { queueBubbleSort, queueSelectionSort, queueInsertionSort, queueShellSort, queueHeapSort } from './queues/queueSorts';
 import { queueMergeSort } from './queues/queueMergeSort';
+import { queueQuickSort } from './queues/queueQuickSort';
 import { SET_ARRAY, EMPTY_HIGHLIGHTED, EMPTY_SELECTED, EMPTY_SWAP, EMPTY_SORTED, SORT_COMPLETED } from './types';
 
-let time = 60;
+let time = 50;
 
 export const bubbleSort = () => (dispatch, getState) => {
     let arr = [...getState().array];
@@ -40,6 +41,12 @@ export const mergeSort = () => (dispatch, getState) => {
     queueDispatch(queueList, dispatch, time);
 }
 
+export const quickSort = () => (dispatch, getState) => {
+    let arr = [...getState().array];
+    let queueList = queueQuickSort(arr, dispatch);
+    queueDispatch(queueList, dispatch, time);
+}
+
 export const generateUnsorted = () => (dispatch) => {
     let arr = createUnsorted();
     dispatch({ type: EMPTY_HIGHLIGHTED });
@@ -69,7 +76,6 @@ const createUnsorted = () => {
     for (let i = 1; i <= 100; i += 3.125) {
         arr.push(i);
     }
-    console.log("length: " + arr.length);
     for (let j = 0; j < arr.length; j++) {
         let rand = Math.floor(Math.random() * (arr.length - 1));
         let temp = arr[rand];

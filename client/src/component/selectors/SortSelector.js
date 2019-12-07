@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bubbleSort, selectionSort, insertionSort, shellSort, heapSort, mergeSort, generateUnsorted } from '../../actions';
+import { bubbleSort, selectionSort, insertionSort, shellSort, heapSort, mergeSort, quickSort, generateUnsorted } from '../../actions';
 import SortButton from './SortButton';
 
 class SortSelector extends Component {
@@ -28,6 +28,7 @@ class SortSelector extends Component {
                 <SortButton text="Shell Sort" disable={selected.length} selected={selected} sortClick={this.props.shellSort} handleState={this.onSort} />
                 <SortButton text="Heap Sort" disable={selected.length} selected={selected} sortClick={this.props.heapSort} handleState={this.onSort} />
                 <SortButton text="Merge Sort" disable={selected.length} selected={selected} sortClick={this.props.mergeSort} handleState={this.onSort} />
+                <SortButton text="Quick Sort" disable={selected.length} selected={selected} sortClick={this.props.quickSort} handleState={this.onSort} />
                 <button id="generate" disabled={!this.props.checkSorted} onClick={this.onGenerate}>Generate</button>
             </nav>
         );
@@ -38,4 +39,4 @@ const mapStateToProps = ({ array, selected, sorted, swaped, checkSorted }) => {
     return { array, selected, sorted, swaped, checkSorted };
 }
 
-export default connect(mapStateToProps, { bubbleSort, selectionSort, insertionSort, shellSort, heapSort, mergeSort, generateUnsorted })(SortSelector);
+export default connect(mapStateToProps, { bubbleSort, selectionSort, insertionSort, shellSort, heapSort, mergeSort, quickSort, generateUnsorted })(SortSelector);
