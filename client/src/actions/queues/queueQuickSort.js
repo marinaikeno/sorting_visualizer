@@ -10,9 +10,6 @@ import { BST, Node } from './BinaryTree';
 
 export const queueQuickSort = (arr) => {
     let queues = new Queues();
-    // let idValPair = arr.map((val, idx) => {
-    //     return { val, idx }
-    // });
 
     let queueing = [];
 
@@ -25,33 +22,37 @@ export const queueQuickSort = (arr) => {
 
     for (let i = 0; i < queueing.length; i++) {
         queues.addToQueue(SET_HIGHLIGHTED, queueing[i].pivotList);
-        for (let queued of queueing[i].idxList) {
-            const { resultArr, swapColor, pivotColor } = queued;
+
+        while (queueing[i].idxList.length) {
+            let queued = queueing[i].idxList.shift();
+
+            const { resultArr, swapColor, pivotColor, pivotAfter } = queued;
 
             // created current array
             for (let result of resultArr) {
-                prevSorted.splice(result.start, result.arr.length, ...result.arr);
-                
                 if (result.arr.length == 1) {
                     queues.addToQueue(SET_SORTED, [result.start])
                 };
+
+                prevSorted.splice(result.start, result.arr.length, ...result.arr);
             }
 
             if (pivotColor.length) {
-            queues.addToQueue(SET_HIGHLIGHTED, pivotColor);
-
+                queues.addToQueue(SET_HIGHLIGHTED, pivotColor);
             }
+
             if (swapColor.length) {
                 queues.addToQueue(SET_SELECTED, swapColor);
-
             }
+
             queues.addToQueue(SET_ARRAY, [...prevSorted]);
-            
+
+            if (pivotAfter.length) {
+                queues.addToQueue(SET_SORTED, pivotAfter);
+            }
         }
 
-        queues.addToQueue(SET_HIGHLIGHTED, queueing[i].pivotAfter);
         queues.addToQueue(EMPTY_SELECTED);
-        queues.addToQueue(SET_SORTED, queueing[i].pivotAfter);
     }
 
     return queues.list;
@@ -59,7 +60,7 @@ export const queueQuickSort = (arr) => {
 
 function quickSort(arr, parentNode, queueing, start, end) {
     if (!queueing[parentNode.level]) {
-        queueing[parentNode.level] = { pivotList: [], idxList: [], pivotAfter: [] };
+        queueing[parentNode.level] = { pivotList: [], idxList: [] };
     }
 
     if (arr.length <= 1) {
@@ -67,6 +68,7 @@ function quickSort(arr, parentNode, queueing, start, end) {
                 resultArr: [{ arr, start }],
                 swapColor: [],
                 pivotColor: [],
+                pivotAfter: []
             });
 
         return arr;
@@ -92,6 +94,7 @@ function quickSort(arr, parentNode, queueing, start, end) {
                 resultArr: [],
                 swapColor: [],
                 pivotColor: [],
+                pivotAfter: []
             };
         }
 
@@ -115,10 +118,12 @@ function quickSort(arr, parentNode, queueing, start, end) {
             right.push(arr[i]);
         }
 
-    }
+        if (i == arr.length-1) {
+            var updatedPivotIdx = start + left.length;
+            queueing[parentNode.level].idxList[i - 1].pivotAfter.push(updatedPivotIdx)
+        }
 
-    const updatedPivotIdx = start + left.length;
-    queueing[parentNode.level].pivotAfter.push(updatedPivotIdx);
+    }
 
     return quickSort(left, parentNode.left, queueing, start, updatedPivotIdx - 1).concat(arr[0], quickSort(right, parentNode.right, queueing, updatedPivotIdx+1, end));
 }
